@@ -1,0 +1,13 @@
+params:
+  - id: force_access_control_off
+    type: bool
+    name: Disable Neko Master Access Control
+    description: Disable Neko Master's built-in token authentication and rely on LazyCat access control
+    default_value: "true"
+    optional: false
+
+locales:
+  zh:
+    force_access_control_off:
+      name: 关闭 Neko Master 自身访问控制
+      description: 关闭应用内置的令牌鉴权，改由懒猫微服入口鉴权保护

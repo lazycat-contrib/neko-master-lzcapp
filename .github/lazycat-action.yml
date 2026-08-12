@@ -1,0 +1,43 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/community.lazycat.app.neko-master.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: neko-master
+
+build:
+  toolchains: []
+  run_buildscript: false
+
+images:
+  - id: neko-master
+    target: service
+    service: neko-master
+    source: ghcr.io/foru17/neko-master
+    channel: custom
+    sort: semver
+    tag_regex: '^1\.4\.0$'
+    delivery:
+      mode: mirror
+      require_digest_match: true
+
+stores:
+  official:
+    enabled: false
+    skip_if_version_exists: false
+    retry:
+      enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: Neko Master
+    summary: Neko Master 的懒猫微服应用包

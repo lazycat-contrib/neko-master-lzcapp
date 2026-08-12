@@ -1,0 +1,38 @@
+name: Publish Neko Master to MiaoMiao Store
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - package.yml
+      - lzc-manifest.yml
+      - lzc-deploy-params.yml
+      - lzc-build.yml
+      - icon.png
+      - .github/lazycat-action.yml
+      - .github/workflows/lazycat.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: lazycat-publish-neko-master
+  cancel-in-progress: false
+
+jobs:
+  lazycat:
+    uses: ca-x/lazycat-github-action/.github/workflows/lazycat.yml@v1
+    with:
+      operation: auto
+      config: .github/lazycat-action.yml
+      image-id: neko-master
+      toolchains: none
+      versioned-release-asset: true
+    secrets:
+      APPSTORE_URL: ${{ secrets.APPSTORE_URL }}
+      APPSTORE_TOKEN: ${{ secrets.APPSTORE_TOKEN }}
+      APP_ID: ${{ secrets.APP_ID }}
+      PRIVATE_STORE_GROUP_CODES: ${{ secrets.PRIVATE_STORE_GROUP_CODES }}

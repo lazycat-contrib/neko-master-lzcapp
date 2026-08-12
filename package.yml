@@ -1,0 +1,18 @@
+package: community.lazycat.app.neko-master
+version: 1.4.0
+name: Neko Master
+description: 面向 Clash、Mihomo 与 Surge 网关的实时流量分析与可视化面板
+author: foru17
+license: MIT
+homepage: https://github.com/foru17/neko-master
+min_os_version: 1.5.0
+permissions:
+  required:
+    - net.internet
+locales:
+  zh:
+    name: Neko Master
+    description: 面向 Clash、Mihomo 与 Surge 网关的实时流量分析与可视化面板
+  en:
+    name: Neko Master
+    description: Real-time traffic analytics and visualization for Clash, Mihomo, and Surge gateways
