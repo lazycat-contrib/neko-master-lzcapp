@@ -1,6 +1,9 @@
 name: Publish Neko Master to MiaoMiao Store
 
 on:
+  # Daily auto-update; GitHub Actions cron is UTC (CST = UTC+8)
+  schedule:
+    - cron: "29 10 * * *"
   push:
     branches:
       - main
